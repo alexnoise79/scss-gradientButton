@@ -1,0 +1,25 @@
+
+@mixin gradientButton($color:white){
+  @include background-image(linear-gradient(top, lighten($color, 20%), $color));
+  border: none;
+  border-top: 1px solid lighten($color, 25%);
+  color: rgb(245, 245, 245);
+
+  &:hover {
+    @include background-image(linear-gradient(top, tint($color, 15%), shade($color,10%)));
+    border-top-color: shade($color, 5%);
+    color: rgb(255, 255, 255);
+  }
+
+  &:active {
+    @include background-image(linear-gradient(bottom, tint($color, 15%), shade($color,10%)));
+    border-top-color: lighten($color, 25%);
+  }
+
+  &:disabled {
+    @include background-image(linear-gradient(bottom, darken(tint($color, 15%),20%), darken(shade($color,10%),20%)));
+    color: rgb(215, 215, 215);
+    border-top-color: lighten($color, 10%);
+    cursor: auto;
+  }
+}
